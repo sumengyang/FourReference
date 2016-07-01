@@ -40,8 +40,18 @@ public class TestString {
 		String str = null;
 //		str = NULL;
 		
+		System.out.println(Boolean.TYPE);
+		System.out.println(Character.TYPE);
+		System.out.println(Integer.TYPE);
+		System.out.println(Byte.TYPE);
+		System.out.println(Float.TYPE);
+		System.out.println(Double.TYPE);
+		System.out.println(Long.TYPE);
+		System.out.println(Short.TYPE);
 		
 		
+		System.out.println(Character.SIZE);
+		System.out.println(Boolean.TYPE);
 	}
 
 }
