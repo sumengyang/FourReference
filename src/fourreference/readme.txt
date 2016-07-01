@@ -6,3 +6,5 @@
 
 在实现一个缓存系统的时候，如果全部使用强引用，那么你需要自己去手动的把某些引用clear掉(引用置位null)，否则迟早会抛出out of memory错误。
 缓存系统引入弱引用或者软引用的唯一原因是，把引用clear的事情交由Java垃圾回收器来处理，cache程序自己置身事外
+
+HashMap WeakHashMap
