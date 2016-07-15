@@ -1,20 +1,21 @@
 package Container;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class test {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int i = tableSizeFor(25);
-		System.out.println(i);
+		Integer i1 = 150;
+		Integer i2 = 150;
+		System.out.println(i1 == i2);
+
+		final Object object = new Object();
+		Map map = new HashMap<Integer, String>();
+		map.put(i1, object);
+		map.put(i2, object);
+		System.out.println(map);
+
 	}
-	  static final int tableSizeFor(int paramInt)
-	  {
-	    int i = paramInt - 1;
-	    i |= i >>> 1;
-	    i |= i >>> 2;
-	    i |= i >>> 4;
-	    i |= i >>> 8;
-	    i |= i >>> 16;
-	    return i >= 1073741824 ? 1073741824 : i < 0 ? 1 : i + 1;
-	  }
+
 }
