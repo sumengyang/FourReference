@@ -1,11 +1,12 @@
 package datastructure;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
 public class BinarayTraverse {
 
-	private int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+	private int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
 	private static List<Node> nodeList = null;
 
 	/**
@@ -33,17 +34,21 @@ public class BinarayTraverse {
 		// 对前lastParentIndex-1个父节点按照父节点与孩子节点的数字关系建立二叉树
 		for (int parentIndex = 0; parentIndex < array.length / 2 - 1; parentIndex++) {
 			// 左孩子
-			nodeList.get(parentIndex).leftChild = nodeList.get(parentIndex * 2 + 1);
+			nodeList.get(parentIndex).leftChild = nodeList
+					.get(parentIndex * 2 + 1);
 			// 右孩子
-			nodeList.get(parentIndex).rightChild = nodeList.get(parentIndex * 2 + 2);
+			nodeList.get(parentIndex).rightChild = nodeList
+					.get(parentIndex * 2 + 2);
 		}
 		// 最后一个父节点:因为最后一个父节点可能没有右孩子，所以单独拿出来处理
 		int lastParentIndex = array.length / 2 - 1;
 		// 左孩子
-		nodeList.get(lastParentIndex).leftChild = nodeList.get(lastParentIndex * 2 + 1);
+		nodeList.get(lastParentIndex).leftChild = nodeList
+				.get(lastParentIndex * 2 + 1);
 		// 右孩子,如果数组的长度为奇数才建立右孩子
 		if (array.length % 2 == 1) {
-			nodeList.get(lastParentIndex).rightChild = nodeList.get(lastParentIndex * 2 + 2);
+			nodeList.get(lastParentIndex).rightChild = nodeList
+					.get(lastParentIndex * 2 + 2);
 		}
 	}
 
@@ -95,22 +100,56 @@ public class BinarayTraverse {
 		System.out.print(node.data + " ");
 	}
 
+	/**
+	 * 层序遍历
+	 * 
+	 * 这三种不同的遍历结构都是一样的，只是先后顺序不一样而已
+	 * 
+	 * @param node
+	 *            遍历的节点
+	 */
+	public static void levelOrderTraverse(Node node) {
+		if (node == null)
+			return;
+		List<Node> list = new ArrayList<Node>();
+		List<Integer> data = new ArrayList<Integer>();
+		list.add(node);
+		while (true) {
+			if (list.isEmpty())
+				break;
+			List<Node> nextLayer = new ArrayList<Node>();
+			for (Node node0 : list) {
+				data.add(node0.data);
+				if (node0.leftChild != null)
+					nextLayer.add(node0.leftChild);
+				if (node0.rightChild != null)
+					nextLayer.add(node0.rightChild);
+			}
+			list = nextLayer;
+		}
+		for (Integer num : data)
+			System.out.print(num + " ");
+	}
+
 	public static void main(String[] args) {
 		BinarayTraverse binTree = new BinarayTraverse();
 		binTree.createBinTree();
 		// nodeList中第0个索引处的值即为根节点
 		Node root = nodeList.get(0);
 
-		System.out.println("先序遍历：");
+		System.out.print("先序遍历：");
 		preOrderTraverse(root);
 		System.out.println();
 
-		System.out.println("中序遍历：");
+		System.out.print("中序遍历：");
 		inOrderTraverse(root);
 		System.out.println();
 
-		System.out.println("后序遍历：");
+		System.out.print("后序遍历：");
 		postOrderTraverse(root);
-	}
+		System.out.println();
 
+		System.out.print("层序遍历：");
+		levelOrderTraverse(root);
+	}
 }
