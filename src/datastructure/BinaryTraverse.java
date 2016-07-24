@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-public class BinarayTraverse {
+public class BinaryTraverse {
 
 	private int[] array = { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 };
 	private static List<Node> nodeList = null;
@@ -132,7 +132,7 @@ public class BinarayTraverse {
 	}
 
 	public static void main(String[] args) {
-		BinarayTraverse binTree = new BinarayTraverse();
+		BinaryTraverse binTree = new BinaryTraverse();
 		binTree.createBinTree();
 		// nodeList中第0个索引处的值即为根节点
 		Node root = nodeList.get(0);
